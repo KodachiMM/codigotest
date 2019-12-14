@@ -1,0 +1,43 @@
+#package-order {
+	.credit {
+		background-color: #53939A;
+		color: white;
+		width: 50px;
+		height: 50px;
+		padding-top: 12px;
+		text-align: center;
+		border-radius: 10rem;
+
+		&.share-pack {
+			background-color: #1E455F;
+		}
+
+		&.unlimited-pack {
+			background: linear-gradient(45deg, #53939A, #53939A), linear-gradient(45deg, #1E455F, #1E455F);
+			background-size: 50% 100%, 100% 100%;
+			background-position: 0% 0%, 0% 100%;
+			background-repeat: no-repeat;
+		}
+	}
+
+	.class-color {
+		color: #53939A;
+		font-weight: 500;
+		font-size: 18px;
+	}
+
+	.class-color-small {
+		color: #53939A;
+		font-size: 14px;
+	}
+
+	.success-icon {
+		margin-top: 10px;
+		margin-left: 10px;
+	}
+
+	.grand-total {
+		color: #53939A;
+		font-weight: 500;
+	}
+}

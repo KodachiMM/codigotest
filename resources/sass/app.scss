@@ -1,0 +1,15 @@
+@import "login";
+@import "package";
+@import "package-order";
+
+body {
+	background-color: #E4E5E6;
+}
+
+.logout-btn {
+	cursor: pointer;
+}
+
+.router-link-exact-active {
+	color: rgba(0,0,0,.9) !important;
+}

@@ -1,0 +1,53 @@
+#package-style {
+	.credit {
+		background-color: #53939A;
+		color: white;
+		width: 50px;
+		height: 50px;
+		margin: auto;
+		padding-top: 12px;
+		text-align: center;
+		border-radius: 10rem;
+
+		&.share-pack {
+			background-color: #1E455F;
+		}
+
+		&.unlimited-pack {
+			background: linear-gradient(45deg, #53939A, #53939A), linear-gradient(45deg, #1E455F, #1E455F);
+			background-size: 50% 100%, 100% 100%;
+			background-position: 0% 0%, 0% 100%;
+			background-repeat: no-repeat;
+		}
+	}
+
+	.per-pack {
+		margin-bottom: 30px;
+	}
+
+	.text-hidden {
+		opacity: 0;
+	}
+
+	.ribbon-top-left {
+		top: -20px;
+		left: -10px;
+	}
+
+	.ribbon {
+		width: 125px;
+		height: 100px;
+		overflow: hidden;
+		position: absolute;
+
+		span {
+			text-align: center;
+			display: block;
+			padding: 5px 0;
+			background-color: rgba(0,0,0,.9);
+			font-size: 12px;
+			color: white;
+			text-transform: uppercase;
+		}
+	}
+}
