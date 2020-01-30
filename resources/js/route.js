@@ -1,18 +1,12 @@
 import Router from 'vue-router';
 
-import Login from './components/Login';
-import Package from './components/Package';
-import PackageOrder from './components/PackageOrder';
-import Success from './components/Success';
-import NotFound from './errors/NotFound';
-
 const router = new Router({
 	mode: 'history',
 	routes: [
         {
             path: '/',
             name: 'index',
-			component: Package,
+			component: () => import('./components/Package'),
 			meta: {
 				requiresAuth: true,
 			},
@@ -20,7 +14,7 @@ const router = new Router({
 		{
             path: '/packages',
             name: 'package',
-			component: Package,
+			component: () => import('./components/Package'),
 			meta: {
 				requiresAuth: true,
 			},
@@ -28,7 +22,7 @@ const router = new Router({
 		{
             path: '/packages/:id',
             name: 'packageOrder',
-			component: PackageOrder,
+			component: () => import('./components/PackageOrder'),
 			meta: {
 				requiresAuth: true,
 			},
@@ -36,7 +30,7 @@ const router = new Router({
 		{
             path: '/success',
             name: 'success',
-			component: Success,
+			component: () => import('./components/Success'),
 			meta: {
 				requiresAuth: true,
 			},
@@ -44,7 +38,7 @@ const router = new Router({
 		{
 			path: '/login',
 			name: 'login',
-			component: Login,
+			component: () => import('./components/Login'),
 			meta: {
 				layout: 'no-sidebar',
 				requiresAuth: false,
@@ -54,7 +48,7 @@ const router = new Router({
 		{
 			path: "*",
 			name: "404*",
-			component: NotFound,
+			component: () => import('./errors/NotFound'),
 			meta: {
 				layout: 'no-sidebar',
 				requiresAuth: false,

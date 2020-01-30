@@ -61,26 +61,16 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
-	data() {
-		return {
-			pack_list: [],
-		};
+	computed: {
+		...mapState([
+			'pack_list'
+		])
 	},
 
 	methods: {
-		async fetchPackages() {
-			await axios
-				.get('/api/packages')
-				.then(({ data }) => {
-					if (data.errorCode == 0 && data.message == 'Success') {
-						this.pack_list = data.data.pack_list;
-					}
-				}).catch(error => {
-					console.log(error);
-				});
-		},
-
 		packColor(pack_type) {
 			if (pack_type == 'shareable') {
 				return 'credit share-pack';
@@ -90,10 +80,6 @@ export default {
 
 			return 'credit';
 		},
-	},
-
-	mounted() {
-		this.fetchPackages();
 	},
 };
 </script>

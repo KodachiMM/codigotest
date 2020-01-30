@@ -1,5 +1,5 @@
 <template>
-	<div class="container mt-5" id="package-order">
+	<div class="container mt-5" id="package-order" v-if="isLoaded">
 		<div class="card">
 			<div class="card-header">
 				<h3>Class Pack Purchase Review</h3>
@@ -101,6 +101,8 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 const GST = 7 / 100;
 
 export default {
@@ -120,18 +122,18 @@ export default {
 		};
 	},
 
+	computed: {
+		...mapGetters([
+			'isLoaded',
+			'getPackById'
+		])
+	},
+
 	methods: {
-		async getPackage() {
-			await axios
-				.get(`/api/packages/${this.pack_id}`)
-				.then(({ data }) => {
-					this.pack = data.data;
-					this.taxAmt = this.pack.pack_price * GST;
-					this.grandTotal = this.pack.pack_price + this.taxAmt;
-				})
-				.catch(error => {
-					console.log(error);
-				});
+		getPackage() {
+			this.pack = this.getPackById(this.pack_id);
+			this.taxAmt = this.pack.pack_price * GST;
+			this.grandTotal = this.pack.pack_price + this.taxAmt;
 		},
 
 		async submitPromoCode() {

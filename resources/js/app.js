@@ -7,8 +7,13 @@ import './axios_intercept.js';
 import Main from './Main';
 
 new Vue({
-	el: '#app',
 	router,
-    components: { Main },
-	template: '<Main></Main>',
-});
+	render: h => h(Main),
+}).$mount('#app')
+
+// new Vue({
+// 	el: '#app',
+// 	router,
+// 	components: { Main },
+// 	template: '<Main></Main>',
+// });

@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+const ChunkRenamePlugin = require('webpack-chunk-rename-plugin');
 
 /*
  |--------------------------------------------------------------------------
@@ -11,6 +12,22 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css')
-    .extract([ 'vue', 'axios' ], 'public/js/vendor.js');
+mix.js('resources/js/app.js', 'app.js')
+	.extract([ 'vue', 'axios', 'vuex' ], 'vendor.js')
+	.webpackConfig({
+		plugins: [ 
+			new ChunkRenamePlugin({
+				initialChunksWithEntry: true,
+				'/app': 'js/app.js',
+				'/vendor': 'js/vendor.js',
+			})
+		],
+		output: {
+			filename: (chunkData) => {
+				return chunkData.chunk.name === '/manifest' ? 'js/manifest.js' : 'js/[name].js';
+			},
+			chunkFilename: mix.inProduction() ? 'js/chunks/[name].[chunkhash].js' : 'js/chunks/[name].js'
+		},
+    });
+    
+// mix.sass('resources/sass/app.scss', 'public/css');

@@ -9,9 +9,18 @@
 </template>
 
 <script>
+import store from "../store";
 import UserHeader from "../components/UserHeader.vue";
 
 export default {
+	store,
 	components: { UserHeader },
+	created() {
+		let token = localStorage.getItem('access_token');
+
+		if (token != null) {
+			this.$store.dispatch('fetchPackages');
+		}
+	}
 };
 </script>
